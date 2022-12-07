@@ -1,4 +1,7 @@
 import * as os from 'os'
+import { ls } from './commands/ls.js'
+import { up } from './commands/up.js'
+import { cd } from './commands/cd.js'
 
 const homedir = os.homedir()
 
@@ -17,11 +20,14 @@ const parseArgs = arg =>
 const checkInput = async cmd => {
 	switch (cmd) {
 		case 'up':
-			return
+			await up()
+			break
 		case 'cd':
-			return
+			await cd()
+			break
 		case 'ls':
-			return
+			await ls()
+			break
 		case 'cat':
 			return
 		case 'add':
@@ -66,5 +72,4 @@ async function init() {
 		console.log(`Thank you for using File Manager, ${userName}, goodbye!`)
 	})
 }
-
 await init()
