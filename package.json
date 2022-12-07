@@ -1,0 +1,17 @@
+{
+  "name": "file-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:args": "node src/index.js -- --username=your_username"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vzanimonets/file-manager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
