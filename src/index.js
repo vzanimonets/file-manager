@@ -1,7 +1,8 @@
 import * as os from 'os'
-import { ls } from './commands/ls.js'
-import { up } from './commands/up.js'
-import { cd } from './commands/cd.js'
+
+import { cd, ls, up } from './commands/index.js'
+
+import * as constants from './constants/index.js'
 
 const homedir = os.homedir()
 
@@ -49,7 +50,7 @@ const checkInput = async cmd => {
 		case 'decompress':
 			return
 		default:
-			console.log('smth where wrong!')
+			console.log(constants.OPERATION_ERROR_MESSAGE)
 	}
 	console.log(`You are currently in ${process.cwd()}`)
 }
@@ -60,7 +61,8 @@ async function init() {
 
 	process.stdout.write(`Welcome to the File Manager, ${userName}!\n`)
 
-	process.stdin.on('data', function (data) {
+	process.stdin.on('data', data => {
+		if (data.toString().includes('.exit')) process.exit(0)
 		checkInput(data.toString().trim())
 	})
 
@@ -69,7 +71,7 @@ async function init() {
 	})
 
 	process.on('SIGINT', () => {
-		console.log(`Thank you for using File Manager, ${userName}, goodbye!`)
+		process.stdout.write(`Thank you for using File Manager, ${userName}, goodbye!`)
 	})
 }
 await init()

@@ -1,6 +1,6 @@
 import { readdir } from 'node:fs/promises'
 
-const ERROR_MESSAGE = 'FS operation failed'
+import { FS_ERROR_MESSAGE } from '../constants/index.js'
 
 const getFileList = async dirName => {
 	let files = []
@@ -23,7 +23,7 @@ const ls = async () => {
 		console.table(sorted)
 	} catch (e) {
 		console.log(e)
-		throw new Error(ERROR_MESSAGE)
+		throw new Error(FS_ERROR_MESSAGE)
 	}
 }
 
