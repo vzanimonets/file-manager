@@ -1,6 +1,6 @@
 import { readdir } from 'node:fs/promises'
 
-import { FS_ERROR_MESSAGE } from '../constants/index.js'
+import { FS_EMPTY_DIR_MESSAGE } from '../constants/index.js'
 
 const getFileList = async dirName => {
 	let files = []
@@ -17,14 +17,10 @@ const sortFiles = (a, b) =>
 
 const ls = async () => {
 	const folder = process.cwd()
-	try {
-		const files = await getFileList(folder)
-		const sorted = files.sort(sortFiles)
-		console.table(sorted)
-	} catch (e) {
-		console.log(e)
-		throw new Error(FS_ERROR_MESSAGE)
-	}
+
+	const files = await getFileList(folder)
+	const sorted = files.sort(sortFiles)
+	sorted.length ? console.table(sorted) : console.log(FS_EMPTY_DIR_MESSAGE)
 }
 
 export { ls }
