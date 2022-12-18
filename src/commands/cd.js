@@ -1,12 +1,11 @@
-import {chdir} from 'node:process'
-
-import { FS_ERROR_MESSAGE } from '../constants/index.js'
+import { chdir } from 'node:process'
+import { sep } from 'path'
 
 const cd = async pathToDirectory => {
-    try {
-        await chdir(pathToDirectory)
-    } catch (error) {
-        throw new Error(FS_ERROR_MESSAGE)
-    }
+	const _path =
+		pathToDirectory.length === 2 && pathToDirectory.endsWith(':')
+			? pathToDirectory.concat(sep)
+			: pathToDirectory
+	await chdir(_path)
 }
-export {cd}
+export { cd }
