@@ -49,31 +49,31 @@ const checkInput = async (cmd, args) => {
 				break
 			case 'cat':
 				cat(arg1)
-				return
+				break
 			case 'add':
 				await add(arg1)
-				return
+				break
 			case 'rn':
 				await rn(arg1, arg2)
-				return
+				break
 			case 'cp':
 				await cp(arg1, arg2)
-				return
+				break
 			case 'mv':
 				await mv(arg1, arg2)
-				return
+				break
 			case 'rm':
 				await rm(arg1)
-				return
+				break
 			case 'os':
 				_os(arg1)
-				return
+				break
 			case 'hash':
 				await hash(arg1)
-				return
+				break
 			case 'compress':
 				await compress(arg1, arg2)
-				return
+				break
 			case 'decompress':
 				await decompress(arg1, arg2)
 				break
